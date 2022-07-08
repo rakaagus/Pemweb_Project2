@@ -46,7 +46,6 @@ class TempatWisata extends CI_Controller{
         $this->form_validation->set_rules('nama', 'nama wisata', 'required|is_unique[tempat_wisata.nama]|min_length[5]',
         array(
             'required' => 'Field %s Harus diisi',
-            'is_unique' => 'Data '.$_nama.' Ini Sudah Ada Harap Masukan Data Baru',
             'min_length' => 'Field %s Harus Meiliki Setidaknya 5 Karakter'
         )
         );

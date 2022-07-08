@@ -19,7 +19,6 @@ class Komentar extends CI_Controller{
     }
 
     public function delete(){
-
         $_id = $this->input->get('id');
         $this->load->model("Komentar_model", 'komentar');
 
