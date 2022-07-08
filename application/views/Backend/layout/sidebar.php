@@ -71,9 +71,17 @@
           <!-- Comment -->
           <li class="nav-item">
             <a href="<?= base_url() ?>index.php/komentar" class="nav-link">
-            <i class="nav-icon far fa-envelope"></i>
+            <i class="nav-icon far fa-comment"></i>
             <p>
               Komentar
+            </p>
+          </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url() ?>index.php/user" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+              User
             </p>
           </a>
           </li>
