@@ -506,7 +506,11 @@ p {
 
 /* ===== Hero CSS ===== */
 .ud-hero {
+  background-image: url("http://localhost/Pemweb_Project2/assets/images/hero/back-hero.jpg");
   background: var(--primary-color);
+  
+  background-size: cover;
+  background-position: center;
   padding-top: 180px;
 }
 
@@ -643,6 +647,10 @@ p {
 .ud-hero-image img {
   max-width: 100%;
   text-align: center;
+}
+
+.ud-hero-image .banner {
+  border-radius: 10px 60px;
 }
 
 .ud-hero-image .shape {

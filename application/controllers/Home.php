@@ -5,9 +5,12 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$this->load->model("JenisWisata_model", 'jns');
+		$this->load->model("Tmpwisata_model",'wisata');
+		
         $data = array(
             'title' => 'Landing Page',
-			'list_category' => $this->jns->getAll()
+			'list_category' => $this->jns->getAll(),
+			'cwisata' => $this->wisata->getAll()
         );
         
 		$this->load->view('FrontEnd/layouts/header', $data);
