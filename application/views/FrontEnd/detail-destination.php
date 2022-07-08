@@ -102,9 +102,16 @@
                   class="shape shape-2"
                 />
                 <h3 class="ud-newsletter-title">Make Comment</h3>
+                <?php
+                  if($this->session->has_userdata('USERNAME')): 
+                ?>
+
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch static backdrop modal
                 </button>
+                <?php
+                  endif;
+                ?>
               </div>
 
               <div class="ud-articles-box">
@@ -215,16 +222,25 @@
     <!-- ====== Blog End ====== -->
 
     <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Make Comment</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Make Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <select class="form-select mb-4" aria-label="Default select example">
+          <option selected>Beri Nilai Wisata ini</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px"></textarea>
+            <label for="floatingTextarea">Comments</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>

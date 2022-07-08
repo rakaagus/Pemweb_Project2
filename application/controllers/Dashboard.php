@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => "Dashboard | Home"
+			'title' => "Admin | Kelola Wisata Depok"
 		);
 
 		$this->load->view('Backend/layout/header', $data);
