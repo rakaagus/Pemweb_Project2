@@ -42,24 +42,37 @@
           <div class="col-lg-12">
             <div class="ud-section-title">
               <span></span>
-              <h2>Tempat Wisata Depok Terpopuler</h2>
+              <h2>Most Popular Depok Tourist Attractions</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                this is a very popular tourist spot out of the rest
               </p>
             </div>
           </div>
         </div>
         <div class="row">
-          <?php foreach ($cwisata as $x) : ?>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-              <div class="ud-cwisata mb-4">
-                <div class="cwisata-img-warp">
-                  <img src="<?php echo base_url().'uploads/wisata/'.$x->foto1;?>" class="img-fluid" alt="courses-img">
-                </div>
-                <!-- nama wisata -->
+          <?php foreach ($cwisata as $x) : 
+            $filegambar1 = base_url('/uploads/wisata/'.$x->foto1);
+            ?>
+            <div class="col-lg-4 col-md-6">
+            <div class="ud-single-blog">
+              <div class="ud-blog-image">
+                <a href="<?= base_url()?>index.php/home/detaildestination?id=<?= $x->id ?>">
+                  <img src="<?= $filegambar1;?>" alt="blog" />
+                </a>
+              </div>
+              <div class="ud-blog-content">
+                <span class="ud-blog-date"><?= $x->nama_jenis ?></span>
+                <h3 class="ud-blog-title">
+                  <a href="<?= base_url()?>index.php/home/detaildestination?id=<?= $x->id ?>">
+                    <?= $x->nama ?>
+                  </a>
+                </h3>
+                <p class="ud-blog-desc">
+                  <?= $x->deskripsi ?>
+                </p>
               </div>
             </div>
+          </div>
           <?php endforeach;?>
         </div>
       </div>
@@ -273,8 +286,7 @@
               <span>Our Team</span>
               <h2>Meet The Team</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                this is our team in building this app, They are the best
               </p>
             </div>
           </div>
@@ -300,8 +312,8 @@
                 />
               </div>
               <div class="ud-team-info">
-                <h5>Adveen Desuza</h5>
-                <h6>UI Designer</h6>
+                <h5>Pajar Septianto</h5>
+                <h6>Wakil Ketua / Dev-Ops</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>
@@ -341,8 +353,8 @@
                 />
               </div>
               <div class="ud-team-info">
-                <h5>Jezmin uniya</h5>
-                <h6>Product Designer</h6>
+                <h5>Fatin Yamin</h5>
+                <h6>Ketua Kelompok / Developer</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>
@@ -382,8 +394,8 @@
                 />
               </div>
               <div class="ud-team-info">
-                <h5>Andrieo Gloree</h5>
-                <h6>App Developer</h6>
+                <h5>Raka Agus Mulana</h5>
+                <h6>Ui Desain / Developer / Anggota</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>
@@ -423,8 +435,8 @@
                 />
               </div>
               <div class="ud-team-info">
-                <h5>Jackie Sanders</h5>
-                <h6>Content Writer</h6>
+                <h5>Ahmad Dulloh</h5>
+                <h6>Anggota / Presentasion Comunicated</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>

@@ -78,6 +78,14 @@
           </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url() ?>index.php/user" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+              User
+            </p>
+          </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url() ?>index.php/login/logout" class="nav-link">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
               <p>Logout</p>

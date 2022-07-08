@@ -19,6 +19,11 @@
         // INNER JOIN user AS u ON k.user_id = u.id
         // INNER JOIN nilai_rating AS r ON k.nilai_rating_id = r.id
         // INNER JOIN tempat_wisata AS w ON k.tempat_wisata_id = w.id;";
+
+        public function delete(){
+            $sql = "DELETE FROM komentar WHERE id=?";
+            $this->db->query($sql, array($id));
+        }
     }
 
 ?>
