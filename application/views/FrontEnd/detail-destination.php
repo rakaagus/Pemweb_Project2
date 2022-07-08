@@ -40,7 +40,7 @@
                       <i class="lni lni-money-location"></i> <span><?= $wisata->latlong ?></span>
                     </p>
                     <p class="comment">
-                      <i class="lni lni-star"></i> <span><?= $wisata->skor_rating ?></span>
+                      <i class="lni lni-star"></i> <span><?= $wisata->skor_rating ?> / 10</span>
                     </p>
                   </div>
                 </div>
@@ -102,13 +102,22 @@
                   class="shape shape-2"
                 />
                 <h3 class="ud-newsletter-title">Make Comment</h3>
+                <?php
+                  if($this->session->has_userdata('USERNAME')): 
+                ?>
+
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch static backdrop modal
                 </button>
+                <?php
+                  endif;
+                ?>
               </div>
 
               <div class="ud-articles-box">
                 <h3 class="ud-articles-box-title">Popular Comment</h3>
+                <?php foreach($list_comentar as $comment):?>
+                <?php if($wisata->nama == $comment->nama): ?>
                 <ul class="ud-articles-list">
                   <li>
                     <div class="ud-article-image">
@@ -120,14 +129,16 @@
                     <div class="ud-article-content">
                       <h5 class="ud-article-title">
                         <a href="javascript:void(0)">
-                          The 8 best landing page builders, reviewed
+                          <?= $comment->isi ?>
                         </a>
                       </h5>
-                      <p class="ud-article-author">Martin Fedous</p>
+                      <p class="ud-article-author"><?= $comment->username ?></p>
                     </div>
                   </li>
                   <li>
                 </ul>
+                <?php endif; ?>
+                <?php endforeach;?>
               </div>
 
             </div>
@@ -146,85 +157,62 @@
           </div>
         </div>
         <div class="row">
+          <?php foreach($list_wisata_related as $data): ?>
+          <?php if($data->nama_jenis == $wisata->nama_jenis):?>
           <div class="col-lg-4 col-md-6">
             <div class="ud-single-blog">
               <div class="ud-blog-image">
                 <a href="blog-details.html">
-                  <img src="<?= base_url('assets/images/blog/blog-01.jpg')?>" alt="blog" />
+                  <img src="<?= base_url('/uploads/wisata/'.$data->foto1)?>" alt="blog" />
                 </a>
               </div>
               <div class="ud-blog-content">
-                <span class="ud-blog-date">Dec 22, 2023</span>
+                <span class="ud-blog-date"><?= $data->nama_jenis ?></span>
                 <h3 class="ud-blog-title">
                   <a href="blog-details.html">
-                    Meet AutoManage, the best AI management tools
+                    <?= $data->nama ?>
                   </a>
                 </h3>
                 <p class="ud-blog-desc">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
+                  <?= $data->deskripsi ?>
                 </p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-blog">
-              <div class="ud-blog-image">
-                <a href="blog-details.html">
-                  <img src="<?= base_url('assets/images/blog/blog-02.jpg')?>" alt="blog" />
-                </a>
-              </div>
-              <div class="ud-blog-content">
-                <span class="ud-blog-date">Dec 22, 2023</span>
-                <h3 class="ud-blog-title">
-                  <a href="blog-details.html">
-                    How to earn more money as a wellness coach
-                  </a>
-                </h3>
-                <p class="ud-blog-desc">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-blog">
-              <div class="ud-blog-image">
-                <a href="blog-details.html">
-                  <img src="<?= base_url('assets/images/blog/blog-03.jpg')?>" alt="blog" />
-                </a>
-              </div>
-              <div class="ud-blog-content">
-                <span class="ud-blog-date">Dec 22, 2023</span>
-                <h3 class="ud-blog-title">
-                  <a href="blog-details.html">
-                    The no-fuss guide to upselling and cross selling
-                  </a>
-                </h3>
-                <p class="ud-blog-desc">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-              </div>
-            </div>
-          </div>
+          <?php endif; ?>
+          <?php endforeach; ?>
         </div>
       </div>
     </section>
     <!-- ====== Blog End ====== -->
 
     <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Make Comment</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Make Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <?=  form_open('home/makecomment')?>
+          <input type="hidden" name="wisata" value="<?= $wisata->id; ?>">
+          <input type="hidden" name="user" value="<?= $this->session->userdata('IDUSER'); ?>">
+          <select class="form-select mb-4" aria-label="Default select example" name="rating">
+            <?php
+              foreach($list_rating as $rating):
+            ?>
+            <option value="<?= $rating->id ?>"><?= $rating->nama_rating ?></option>
+            <?php endforeach; ?>
+          </select>
+          <div class="form-floating mb-4">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px" name="isi"></textarea>
+            <label for="floatingTextarea">Comments</label>
+          </div>
+
+          <input type="submit" value="comment" class="btn btn-primary">
+          <?= form_close(); ?>
+        </div>
       </div>
     </div>
   </div>
-</div>

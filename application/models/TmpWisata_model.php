@@ -44,6 +44,12 @@
             return $query->row();
         }
 
+        public function category($nama){
+            $this->db->where('nama_jenis', $nama);
+            $query = $this->db->get($this->view);
+            return $query->result();
+        }
+
         public function uploads($data){
             $sql = "UPDATE tempat_wisata SET foto1=?, foto2=?, foto3=? WHERE id=?";
             $this->db->query($sql, $data);
